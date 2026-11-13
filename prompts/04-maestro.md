@@ -16,7 +16,7 @@ Quero que esta conversa vire o maestro: ela conversa comigo, decide e confere, e
    - O que mexe com segurança, senha ou dinheiro, o executor faz com o Opus (model: opus no despacho).
    - Correção vai pra um executor novo, junto com o relatório do revisor.
 
-Me mostre os dois arquivos e a regra antes de salvar.
+Me mostre os dois arquivos e a regra e espere o meu ok antes de salvar.
 
-Depois de salvar, abra de novo o executor.md, o revisor.md e o CLAUDE.md e confirme que cada um está como combinamos, inclusive o model de cada agente.
+Depois de salvar, abra de novo o executor.md, o revisor.md e o CLAUDE.md e confirme que cada um está como combinamos, inclusive o model de cada agente, e que cada arquivo de agente começa com o cabeçalho entre --- com name, description e model, e, comparando com a cópia do começo, confirme que nada do que já estava no CLAUDE.md sumiu.
 ```

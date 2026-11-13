@@ -2,15 +2,17 @@
 
 # Segundo cérebro pro Claude Code
 
-Este repositório tem os 6 prompts que eu uso pra montar um cérebro só meu no Claude Code, usando só uma pasta e uns arquivos de texto: sem Obsidian, sem plugin e sem banco de dados. Eles estão na ordem em que eu monto, cada um num arquivo, prontos pra copiar. São 6 passos, e uma entrevista antes, se você quiser (o passo 0), que serve de base pros passos 1 e 2.
+Este repositório tem os prompts que eu uso pra montar um cérebro só meu no Claude Code, usando só uma pasta e uns arquivos de texto: sem Obsidian, sem plugin e sem banco de dados. Eles estão na ordem em que eu monto, cada um num arquivo, prontos pra copiar. São 6 passos, e uma entrevista antes, se você quiser (o passo 0), que serve de base pros passos 1 e 2.
 
 ## Antes de começar
 
-- Tenha o Claude Code instalado e funcionando.
-- Faça uma cópia da sua pasta `~/.claude` antes de mexer. Os prompts mexem no `CLAUDE.md` e no `settings.json`, e é bom poder voltar atrás.
+- Tenha o Claude Code instalado e logado. O passo a passo oficial, pra Windows e Mac, está em https://code.claude.com/docs/en/quickstart (precisa de um plano pago do Claude ou de uma conta da API). O passo 5 também usa Python (python.org; no Windows, marque "Add python.exe to PATH").
+- Pra abrir: no terminal (PowerShell no Windows, Terminal no Mac), entre na pasta com `cd "<caminho da pasta>"` e digite `claude`. Conversa nova: digite `/exit` e depois `claude` de novo.
+- O Claude Code pede licença, em inglês, antes de criar ou mudar um arquivo ("Do you want to..."). Leia e escolha Yes; com No, o passo para no meio.
+- Faça uma cópia da sua pasta `~/.claude` antes de mexer: os prompts mexem no `CLAUDE.md` e no `settings.json`. O `~` é a sua pasta de usuário: no Windows, `C:\Users\<seu usuário>\.claude`; no Mac, `/Users/<seu usuário>/.claude` (no Finder, Cmd+Shift+. mostra as pastas que começam com ponto). Pra copiar, no PowerShell: `Copy-Item -Recurse "$HOME\.claude" "$HOME\claude-copia"`; no Terminal do Mac: `cp -R ~/.claude ~/claude-copia`.
 - Use um prompt por conversa e na ordem. Cada passo constrói em cima do anterior.
 - Cada prompt termina pedindo pro Claude abrir de novo o que ele escreveu e conferir. Depois de cada passo tem uma linha, "Como saber que funcionou", com um teste que você faz numa conversa nova.
-- Leia o que o Claude mostrar antes de salvar. Os prompts pedem pra ele mostrar o rascunho primeiro, e é aí que você corrige.
+- Leia o que o Claude mostrar antes de salvar. Os prompts pedem pra ele mostrar o rascunho e esperar o seu ok antes de salvar, e é aí que você corrige.
 - O que está entre `<` e `>` é com você: troque pelo caminho, pelo nome ou pelo link que é seu.
 
 ## Os 6 passos
@@ -19,7 +21,7 @@ Este repositório tem os 6 prompts que eu uso pra montar um cérebro só meu no 
 
 <img src="img/00-entrevista.png" alt="Desenho do passo: a entrevista" width="100%">
 
-Antes de montar qualquer coisa, deixa o Claude te conhecer. Se você pede uma memória ou um mapa sem ele saber quem você é, ele inventa, e você gasta o tempo corrigindo. Aqui é ao contrário: ele pergunta, você responde, e tudo vai pra um arquivo, o `entrevista.md`. A regra é uma pergunta por vez, e ele tem que insistir quando a resposta vier vaga. Os passos 1 e 2 leem esse arquivo pra propor as primeiras memórias e os caminhos do mapa. Você pode rodar a entrevista mais de uma vez, e cada rodada acrescenta ao arquivo.
+Antes de montar qualquer coisa, deixa o Claude te conhecer. Se você pede uma memória ou um mapa sem ele saber quem você é, ele inventa, e você gasta o tempo corrigindo. Aqui é ao contrário: ele pergunta, você responde, e tudo vai pra um arquivo, o `entrevista.md`. A regra é uma pergunta por vez, e ele tem que insistir quando a resposta vier vaga. Os passos 1 e 2 leem esse arquivo pra propor as primeiras memórias e os caminhos do mapa. Você pode rodar a entrevista mais de uma vez, e cada rodada acrescenta ao arquivo. Pra pegar o caminho de uma pasta: no Windows, clique nela com o botão direito e escolha "Copiar como caminho"; no Mac, selecione a pasta e aperte Option+Cmd+C. Se não souber, diga o nome e peça pra ele achar.
 
 ```
 Quero que você me entreviste antes de escrever qualquer coisa. O objetivo é te dar o que você precisa saber sobre mim e sobre o meu trabalho.
@@ -49,7 +51,7 @@ Este prompt também está em [prompts/00-entrevista.md](prompts/00-entrevista.md
 
 <img src="img/01-memoria.png" alt="Desenho do passo: a memória" width="100%">
 
-O Claude não lembra de nada de uma conversa pra outra: quando você abre uma nova, ele começa do zero, sem o nome do projeto e sem a correção que você fez ontem. Pra ele, memória é só um texto escrito numa pasta que ele lê. O que funcionou pra mim foi uma memória por arquivo, cada um com um fato só, e um índice com uma linha por memória, pequeno o bastante pra ele ler inteiro toda vez e abrir o resto só quando precisar. Quem decide o que vira memória é você, e quase sempre ela nasce de uma correção.
+O Claude não lembra de nada de uma conversa pra outra: quando você abre uma nova, ele começa do zero, sem o nome do projeto e sem a correção que você fez ontem. Pra ele, memória é só um texto escrito numa pasta que ele lê. O que funcionou pra mim foi uma memória por arquivo, cada um com um fato só, e um índice (`memoria/indice.md`, sem acento, como está no prompt) com uma linha por memória, pequeno o bastante pra ele ler inteiro toda vez e abrir o resto só quando precisar. Quem decide o que vira memória é você, e quase sempre ela nasce de uma correção.
 
 ```
 Quero que você passe a ter memória entre conversas, com uma memória por arquivo. Monte assim:
@@ -63,12 +65,13 @@ Quero que você passe a ter memória entre conversas, com uma memória por arqui
    - Se uma memória ficar errada, corrija ou apague, e tire a linha do índice.
    - O índice tem só uma linha por memória. O detalhe fica no arquivo, que você só abre quando precisar.
    - Não guarde o que já está no código nem o que só importa pra esta conversa.
+   - Esta pasta é a única memória: mesmo com a memória automática do Claude Code ligada, guarde aqui, nunca em ~/.claude/projects/.../memory.
 
 Se existir o arquivo ~/.claude/entrevista.md, leia ele antes e proponha as primeiras memórias a partir das minhas respostas. Eu aprovo uma por uma, e você só cria o arquivo da que eu aprovar.
 
-Me mostre como vai ficar o CLAUDE.md antes de salvar.
+Me mostre como vai ficar o CLAUDE.md e espere o meu ok antes de salvar.
 
-Depois de salvar, abra de novo cada arquivo que você escreveu (o CLAUDE.md, o indice.md e as memórias) e confirme que está como combinamos.
+Depois de salvar, abra de novo cada arquivo que você escreveu (o CLAUDE.md, o indice.md e as memórias) e confirme que está como combinamos, e, comparando com a cópia do começo, confirme que nada do que já estava no CLAUDE.md sumiu.
 ```
 
 Este prompt também está em [prompts/01-memoria.md](prompts/01-memoria.md).
@@ -79,25 +82,25 @@ Este prompt também está em [prompts/01-memoria.md](prompts/01-memoria.md).
 
 <img src="img/02-mapa.png" alt="Desenho do passo: o mapa" width="100%">
 
-Eu tinha uma pasta pra cada projeto e abria o terminal dentro de cada uma. O que resolveu foi um arquivo que eu chamo de mapa: ele não guarda fato nenhum, só diz onde cada coisa mora, como a placa de um shopping. Com ele você abre o terminal sempre na pasta de cima, e de lá o Claude chega em qualquer projeto sem sair procurando. Eu medi: fiz as mesmas três perguntas sobre o meu trabalho antes e depois do mapa. Antes ele levou 305 segundos e leu 870 mil tokens pra responder as três. Depois levou 53 segundos e leu 448 mil, e acertou as três.
+Eu tinha uma pasta pra cada projeto e abria o terminal dentro de cada uma. O que resolveu foi um arquivo que eu chamo de mapa: ele não guarda fato nenhum, só diz onde cada coisa mora, como a placa de um shopping. Com ele você abre o terminal sempre na pasta de cima, e de lá o Claude chega em qualquer projeto sem sair procurando. Eu medi: fiz as mesmas três perguntas sobre o meu trabalho antes e depois do mapa e dos arquivos que ele aponta. Antes ele levou 305 segundos e leu 870 mil tokens pra responder as três. Depois levou 53 segundos e leu 448 mil, e acertou as três. Se os seus projetos estão espalhados, use a pasta onde está a maioria; o mapa pode apontar pra caminhos fora dela. Não use a pasta de usuário inteira.
 
 ```
 Todos os meus projetos ficam em <caminho da pasta de cima>. Quero que você chegue em qualquer um deles a partir dessa pasta, sem sair procurando.
 
-1. Liste as pastas que estão lá dentro e me mostre um rascunho do MAPA.md, com uma linha por lugar: o que é e o caminho. Exemplo: "Clientes da agência: <caminho>/agencia". Se existir o arquivo ~/.claude/entrevista.md, use os caminhos que eu dei lá no rascunho. Eu corrijo os nomes antes de você salvar.
+1. Liste as pastas que estão lá dentro e me mostre um rascunho do MAPA.md, com uma linha por lugar: o que é e o caminho. Exemplo: "Clientes da agência: <caminho>/agencia". Se existir o arquivo ~/.claude/entrevista.md, use os caminhos que eu dei lá no rascunho. Eu corrijo os nomes e você só salva depois do meu ok.
 2. Salve o MAPA.md em <caminho da pasta de cima>. O mapa não guarda fato nenhum, só diz onde cada coisa mora.
-3. No ~/.claude/CLAUDE.md, acrescente duas regras:
+3. No ~/.claude/CLAUDE.md, acrescente três regras:
    - Pra qualquer coisa fora do projeto em que você está, comece pelo mapa: <caminho da pasta de cima>/MAPA.md.
    - Quando alguma coisa mudar de lugar, atualize a linha do mapa na mesma hora.
    - Toda vez que você usar o mapa e um caminho não existir mais, me avise e corrija a linha na hora.
-4. Depois de salvar, confira que cada caminho do MAPA.md existe de verdade e me diga quais não existem. Abra também o CLAUDE.md de novo e confirme que as regras estão lá.
+4. Depois de salvar, confira que cada caminho do MAPA.md existe de verdade e me diga quais não existem. Abra também o CLAUDE.md de novo e confirme que as regras estão lá, e, comparando com a cópia do começo, confirme que nada do que já estava no CLAUDE.md sumiu.
 
 Daqui pra frente eu abro o terminal sempre nessa pasta de cima.
 ```
 
 Este prompt também está em [prompts/02-mapa.md](prompts/02-mapa.md).
 
-**Como saber que funcionou:** abra uma conversa nova na pasta de cima e pergunte onde fica um dos seus projetos. Ele responde pelo mapa, sem sair procurando.
+**Como saber que funcionou:** abra uma conversa nova na pasta de cima e pergunte onde fica um dos seus projetos. Ele responde pelo mapa, sem sair procurando. Na tela, a primeira coisa que ele abre é o `MAPA.md`, e não uma busca.
 
 ### 3. Virar a página
 
@@ -108,7 +111,7 @@ Como o Claude relê a conversa inteira a cada mensagem, conversa grande custa ma
 ```
 Coloque no ~/.claude/CLAUDE.md uma regra chamada "Virar a página":
 
-Quando eu disser "vira a página", quando eu trocar de assunto ou quando a conversa passar de 300 mil tokens, escreva o arquivo <caminho>/retomar.md com:
+Quando eu disser "vira a página", quando eu trocar de assunto ou quando a conversa passar de 300 mil tokens, escreva o arquivo <caminho da pasta de cima>/retomar.md com:
 - o que a gente estava fazendo;
 - o próximo passo;
 - os arquivos envolvidos;
@@ -119,18 +122,20 @@ O retomar cabe numa página e traz tudo o que ainda está pendente, porque cada 
 
 Quando uma conversa nova começar com "retoma", leia o retomar.md antes de qualquer coisa. O que estiver em "Não conferi" é suspeita, não fato: confira antes de usar.
 
-Depois de salvar a regra, abra o ~/.claude/CLAUDE.md de novo e confirme que ela está lá, com os cinco itens do retomar.
+Me mostre como vai ficar antes de salvar e espere o meu ok.
+
+Depois de salvar a regra, abra o ~/.claude/CLAUDE.md de novo e confirme que ela está lá, com os cinco itens do retomar, e, comparando com a cópia do começo, confirme que nada do que já estava no CLAUDE.md sumiu.
 ```
 
 Este prompt também está em [prompts/03-virar-a-pagina.md](prompts/03-virar-a-pagina.md).
 
-**Como saber que funcionou:** diga "vira a página". Ele escreve o `retomar.md` e pede o `/clear`. Depois do `/clear`, comece a conversa com "retoma".
+**Como saber que funcionou:** diga "vira a página". Ele escreve o `retomar.md` e pede o `/clear`. Depois do `/clear`, comece a conversa com "retoma": ele conta onde vocês pararam e qual é o próximo passo, sem você explicar nada.
 
 ### 4. O maestro e os dois agentes
 
 <img src="img/04-maestro.png" alt="Desenho do passo: o maestro e os dois agentes" width="100%">
 
-Quando o trabalho é grande, como ler cinquenta arquivos ou rodar uma bateria de testes, fazer isso na conversa principal enche ela de coisa. Então a conversa principal virou um maestro: ela conversa com você, decide e confere, e manda o trabalho pesado pra outro agente. Um modelo mais barato faz, o mais caro revisa, e o que mexe com segurança, senha ou dinheiro continua com o mais caro fazendo. Eu testei em três tarefas de programação que antes o Opus tinha feito inteiras: com o Sonnet fazendo e o Opus revisando, os agentes custaram 12,82 dólares, contra 24,05 do jeito antigo, quase metade. Um dos três valores é aproximado, porque encerrei a medição antes de fechar a conta daquela tarefa.
+Quando o trabalho é grande, como ler cinquenta arquivos ou rodar uma bateria de testes, fazer isso na conversa principal enche ela de coisa. Então a conversa principal virou um maestro: ela conversa com você, decide e confere, e manda o trabalho pesado pra outro agente. Um modelo mais barato faz, o mais caro revisa, e o que mexe com segurança, senha ou dinheiro continua com o mais caro fazendo. Eu testei em três tarefas de programação que antes o Opus tinha feito inteiras: com o Sonnet fazendo e o Opus revisando, os agentes custaram 12,82 dólares, contra 24,05 do jeito antigo, quase metade. Um dos três valores é aproximado e ficou sem a última revisão, então a economia de verdade é um pouco menor. E em duas das três tarefas sobrou defeito que o Opus sozinho não tinha deixado: é por isso que segurança, senha e dinheiro continuam com o Opus fazendo.
 
 ```
 Quero que esta conversa vire o maestro: ela conversa comigo, decide e confere, e o trabalho pesado vai pra outros agentes.
@@ -144,14 +149,14 @@ Quero que esta conversa vire o maestro: ela conversa comigo, decide e confere, e
    - O que mexe com segurança, senha ou dinheiro, o executor faz com o Opus (model: opus no despacho).
    - Correção vai pra um executor novo, junto com o relatório do revisor.
 
-Me mostre os dois arquivos e a regra antes de salvar.
+Me mostre os dois arquivos e a regra e espere o meu ok antes de salvar.
 
-Depois de salvar, abra de novo o executor.md, o revisor.md e o CLAUDE.md e confirme que cada um está como combinamos, inclusive o model de cada agente.
+Depois de salvar, abra de novo o executor.md, o revisor.md e o CLAUDE.md e confirme que cada um está como combinamos, inclusive o model de cada agente, e que cada arquivo de agente começa com o cabeçalho entre --- com name, description e model, e, comparando com a cópia do começo, confirme que nada do que já estava no CLAUDE.md sumiu.
 ```
 
 Este prompt também está em [prompts/04-maestro.md](prompts/04-maestro.md).
 
-**Como saber que funcionou:** peça uma tarefa grande. Ele manda o executor e depois o revisor, e o `/agents` lista os dois.
+**Como saber que funcionou:** feche e abra o Claude Code e pergunte "quais subagentes você tem?": ele cita o executor e o revisor. Depois peça algo pesado, como "leia todos os arquivos da pasta <projeto> e me diga o que cada um faz": na tela aparece o executor trabalhando e, no fim, o revisor.
 
 ### 5. Os hooks
 
@@ -165,14 +170,14 @@ Quero dois hooks no Claude Code. Antes de mexer, faça uma cópia do ~/.claude/s
 1. O teto (evento Stop): um script em Python que lê o JSON da entrada, abre o arquivo do transcript_path, pega o usage da última resposta e soma input_tokens, cache_creation_input_tokens e cache_read_input_tokens. Se passar de 300 mil, responde {"decision": "block", "reason": "A conversa passou de 300 mil tokens. Vire a página: escreva o retomar e me peça /clear."}. Depois disso, só avisa de novo a cada 100 mil a mais (guarde o último aviso num arquivo com o session_id). Se a entrada vier com stop_hook_active verdadeiro, ou se der qualquer erro, ele sai sem dizer nada.
 2. O lembrete (evento UserPromptSubmit): um script que imprime a data e a hora do meu PC e um lembrete de no máximo três linhas com as regras que eu mais quero que você siga numa conversa longa. Me pergunte quais são essas regras antes de escrever. Tudo o que ele imprime é relido a cada mensagem, então tem que ser curto.
 
-Teste os dois rodando cada script à mão com um JSON de exemplo, e me diga como conferir em /hooks.
+Antes de escrever, veja qual comando do Python existe neste PC (python3, python ou py: rode cada um com --version e use o que responder uma versão; se não houver, me diga e pare) e use esse no settings.json, com o caminho do script entre aspas. Abra os arquivos e escreva a saída em UTF-8. Teste os dois rodando à mão exatamente o comando que ficou no settings.json, com um JSON de exemplo na entrada; no teto, use o transcript desta conversa e um limite de teste de 1000 tokens pra ver o aviso sair, e depois volte pra 300 mil. Me diga como conferir em /hooks.
 
-Depois de salvar, abra de novo o settings.json e os dois scripts e confirme que os dois hooks estão registrados, com o caminho certo de cada script.
+Depois de salvar, confira que o settings.json é um JSON válido e, comparando com a cópia, que nada do que já estava lá sumiu; rode de novo, à mão, o comando de cada hook copiado do settings.json e me mostre a saída.
 ```
 
 Este prompt também está em [prompts/05-hooks.md](prompts/05-hooks.md).
 
-**Como saber que funcionou:** o `/hooks` mostra os dois, e a sua próxima mensagem chega com a data e a hora.
+**Como saber que funcionou:** feche e abra o Claude Code. O `/hooks` mostra os dois. Pergunte "que dia e que horas são?": ele responde certo sem rodar comando nenhum. O teto você viu disparar no teste do próprio passo, com o limite baixo.
 
 ### 6. A personalidade
 
@@ -182,25 +187,27 @@ Esse não estava na minha lista, mas deixa trabalhar com ele bem mais divertido.
 
 ```
 Quero dar uma personalidade pra você. As pessoas que eu gosto de ouvir são:
-- <nome 1>: <link do canal, do Substack ou arquivo com textos>
+- <nome 1>: <link de texto (Substack, blog) ou arquivo com transcrições: vídeo o Claude Code não assiste>
 - <nome 2>: <link ou arquivo>
 - <nome 3, se tiver>: <link ou arquivo>
 O nome desse parceiro vai ser <nome>.
 
-1. Estude o material de cada um e me mostre, com trechos curtos, como cada um fala: o tamanho da frase, as palavras de conversa, como explica uma ideia difícil, como faz humor.
+1. Estude o material de cada um e me mostre, com trechos curtos, como cada um fala: o tamanho da frase, as palavras de conversa, como explica uma ideia difícil, como faz humor. Se não conseguir abrir algum material, me diga em vez de supor; cada trecho vem com o link ou o arquivo de onde saiu.
 2. Escreva ~/.claude/personalidade.md, com no máximo uma página e duas partes:
    - "Como fala": o jeito, com um exemplo curto de cada traço.
    - "O que nunca faz": os vícios de robô que eu não quero ver (frase de efeito, lista pra tudo, resumo no fim, elogio à pergunta).
    Pegue o jeito deles, mas não copie bordão nem piada.
 3. No ~/.claude/CLAUDE.md, acrescente @~/.claude/personalidade.md, pra você ler em toda conversa.
-4. Daqui pra frente, quando eu disser que você soou robô, acrescente uma linha em "O que nunca faz" com o exemplo.
+4. No ~/.claude/CLAUDE.md, junto da linha @, escreva a regra: quando eu disser que você soou robô, acrescente uma linha em "O que nunca faz" do personalidade.md, com o exemplo.
 
-Depois de salvar, abra de novo o personalidade.md e o CLAUDE.md e confirme que o arquivo tem as duas partes e que a linha @ está no CLAUDE.md.
+Me mostre o personalidade.md e a regra e espere o meu ok antes de salvar.
+
+Depois de salvar, abra de novo o personalidade.md e o CLAUDE.md e confirme que o arquivo tem as duas partes e que a linha @ e a regra do "soou robô" estão no CLAUDE.md, e, comparando com a cópia do começo, confirme que nada do que já estava no CLAUDE.md sumiu.
 ```
 
 Este prompt também está em [prompts/06-personalidade.md](prompts/06-personalidade.md).
 
-**Como saber que funcionou:** diga "soou robô". Aparece uma linha nova em "O que nunca faz" no `personalidade.md`.
+**Como saber que funcionou:** logo depois de uma resposta dele, diga "soou robô". Aparece uma linha nova em "O que nunca faz" no `personalidade.md`.
 
 ## Como fica no fim
 

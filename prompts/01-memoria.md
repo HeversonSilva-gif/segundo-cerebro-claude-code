@@ -16,10 +16,11 @@ Quero que você passe a ter memória entre conversas, com uma memória por arqui
    - Se uma memória ficar errada, corrija ou apague, e tire a linha do índice.
    - O índice tem só uma linha por memória. O detalhe fica no arquivo, que você só abre quando precisar.
    - Não guarde o que já está no código nem o que só importa pra esta conversa.
+   - Esta pasta é a única memória: mesmo com a memória automática do Claude Code ligada, guarde aqui, nunca em ~/.claude/projects/.../memory.
 
 Se existir o arquivo ~/.claude/entrevista.md, leia ele antes e proponha as primeiras memórias a partir das minhas respostas. Eu aprovo uma por uma, e você só cria o arquivo da que eu aprovar.
 
-Me mostre como vai ficar o CLAUDE.md antes de salvar.
+Me mostre como vai ficar o CLAUDE.md e espere o meu ok antes de salvar.
 
-Depois de salvar, abra de novo cada arquivo que você escreveu (o CLAUDE.md, o indice.md e as memórias) e confirme que está como combinamos.
+Depois de salvar, abra de novo cada arquivo que você escreveu (o CLAUDE.md, o indice.md e as memórias) e confirme que está como combinamos, e, comparando com a cópia do começo, confirme que nada do que já estava no CLAUDE.md sumiu.
 ```
