@@ -17,5 +17,9 @@ Quero que você passe a ter memória entre conversas, com uma memória por arqui
    - O índice tem só uma linha por memória. O detalhe fica no arquivo, que você só abre quando precisar.
    - Não guarde o que já está no código nem o que só importa pra esta conversa.
 
+Se existir o arquivo ~/.claude/entrevista.md, leia ele antes e proponha as primeiras memórias a partir das minhas respostas. Eu aprovo uma por uma, e você só cria o arquivo da que eu aprovar.
+
 Me mostre como vai ficar o CLAUDE.md antes de salvar.
+
+Depois de salvar, abra de novo cada arquivo que você escreveu (o CLAUDE.md, o indice.md e as memórias) e confirme que está como combinamos.
 ```

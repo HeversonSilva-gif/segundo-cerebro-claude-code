@@ -18,4 +18,6 @@ O nome desse parceiro vai ser <nome>.
    Pegue o jeito deles, mas não copie bordão nem piada.
 3. No ~/.claude/CLAUDE.md, acrescente @~/.claude/personalidade.md, pra você ler em toda conversa.
 4. Daqui pra frente, quando eu disser que você soou robô, acrescente uma linha em "O que nunca faz" com o exemplo.
+
+Depois de salvar, abra de novo o personalidade.md e o CLAUDE.md e confirme que o arquivo tem as duas partes e que a linha @ está no CLAUDE.md.
 ```

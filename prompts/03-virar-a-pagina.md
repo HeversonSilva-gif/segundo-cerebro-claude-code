@@ -17,4 +17,6 @@ Quando eu disser "vira a página", quando eu trocar de assunto ou quando a conve
 O retomar cabe numa página e traz tudo o que ainda está pendente, porque cada versão substitui a anterior. Depois de escrever, me peça pra digitar /clear.
 
 Quando uma conversa nova começar com "retoma", leia o retomar.md antes de qualquer coisa. O que estiver em "Não conferi" é suspeita, não fato: confira antes de usar.
+
+Depois de salvar a regra, abra o ~/.claude/CLAUDE.md de novo e confirme que ela está lá, com os cinco itens do retomar.
 ```

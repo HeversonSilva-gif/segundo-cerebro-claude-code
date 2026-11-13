@@ -17,4 +17,6 @@ Quero que esta conversa vire o maestro: ela conversa comigo, decide e confere, e
    - Correção vai pra um executor novo, junto com o relatório do revisor.
 
 Me mostre os dois arquivos e a regra antes de salvar.
+
+Depois de salvar, abra de novo o executor.md, o revisor.md e o CLAUDE.md e confirme que cada um está como combinamos, inclusive o model de cada agente.
 ```

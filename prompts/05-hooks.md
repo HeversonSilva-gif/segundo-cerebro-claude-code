@@ -11,4 +11,6 @@ Quero dois hooks no Claude Code. Antes de mexer, faça uma cópia do ~/.claude/s
 2. O lembrete (evento UserPromptSubmit): um script que imprime a data e a hora do meu PC e um lembrete de no máximo três linhas com as regras que eu mais quero que você siga numa conversa longa. Me pergunte quais são essas regras antes de escrever. Tudo o que ele imprime é relido a cada mensagem, então tem que ser curto.
 
 Teste os dois rodando cada script à mão com um JSON de exemplo, e me diga como conferir em /hooks.
+
+Depois de salvar, abra de novo o settings.json e os dois scripts e confirme que os dois hooks estão registrados, com o caminho certo de cada script.
 ```
