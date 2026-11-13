@@ -2,7 +2,7 @@
 
 # Segundo cérebro pro Claude Code
 
-Este repositório tem os 6 prompts que eu uso pra montar um cérebro só meu no Claude Code, usando só uma pasta e uns arquivos de texto: sem Obsidian, sem plugin e sem banco de dados. Eles estão na ordem em que eu monto, cada um num arquivo, prontos pra copiar. Antes do primeiro tem um passo 0, uma entrevista, que serve de base pros dois seguintes.
+Este repositório tem os 6 prompts que eu uso pra montar um cérebro só meu no Claude Code, usando só uma pasta e uns arquivos de texto: sem Obsidian, sem plugin e sem banco de dados. Eles estão na ordem em que eu monto, cada um num arquivo, prontos pra copiar. São 6 passos, e uma entrevista antes, se você quiser (o passo 0), que serve de base pros passos 1 e 2.
 
 ## Antes de começar
 
@@ -13,7 +13,7 @@ Este repositório tem os 6 prompts que eu uso pra montar um cérebro só meu no 
 - Leia o que o Claude mostrar antes de salvar. Os prompts pedem pra ele mostrar o rascunho primeiro, e é aí que você corrige.
 - O que está entre `<` e `>` é com você: troque pelo caminho, pelo nome ou pelo link que é seu.
 
-## Os passos
+## Os 6 passos
 
 ### 0. A entrevista
 
